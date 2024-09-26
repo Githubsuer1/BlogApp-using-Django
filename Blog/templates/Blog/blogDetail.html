@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+
+{% block title%}
+    Full Details | {{blog.author}}
+{% endblock %}
+
+{% block content %}
+<div class="p-4 flex justify-center">
+
+    <div class="p-4 bg-white/60 rounded w-full max-w-lg">
+        <p>{{blog.title}}</p>
+        <img class="rounded w-full mt-2.5" src="{{blog.image.url}}" alt="">
+        <div class="mt-2.5 flex justify-between">
+            <p class="text-sm sm:text-md md:text-lg">{{blog.date_added}}</p>
+            <p class="text-sm sm:text-md md:text-lg">By {{blog.author.username}}</p>
+        </div>
+        <button class="w-full bg-blue-400 rounded  p-1 mt-2.5"><a href="{% url "homePage" %}">Back</a></button>
+        {% if request.user == blog.author %}
+            <button class="w-full bg-blue-400 rounded  p-1 mt-2.5"><a href="{% url "editBlog" blog.id %}">Edit</a></button>
+            <button class="w-full bg-blue-400 rounded  p-1 mt-2.5"><a href="{% url "deleteBlog" blog.id %}">Delete</a></button>
+        {% endif %}
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+
+{% block title%}
+    Edit Page 
+{% endblock %}
+
+{% block content %}
+<div class="w-full h-full p-8">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="p-4 ml-auto mr-auto bg-white/40 rounded flex flex-col w-full  max-w-md">
+
+            {{ form.title }}
+            {{ form.image }}
+
+            <input class="w-full max-w-md p-1 font-bold mt-5 rounded text-center bg-pink-400 text-white" type="submit" value="Edit">
+        </div>
+    </form>
+    {% comment %} <a class="w-full bg-blue-400 text-center p-1 mt-4" href="{% url 'blogDetail' blog.id %}">Back</a> {% endcomment %}
+</div>
+{% endblock %}

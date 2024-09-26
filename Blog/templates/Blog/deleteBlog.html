@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+
+{% block title%}
+    Full Details | {{blog.author}}
+{% endblock %}
+
+{% block content %}
+<div class="w-full h-full flex justify-center p-8">
+    <div class="p-4 bg-white/40 w-full max-w-lg flex flex-col justify-between gap-2.5 rounded">
+        
+        <div class="flex justify-between">
+            <h1>Are you sure you want to delete the object??? </h1>
+            <a class="bg-red-500 p-1 rounded" href="{% url 'confirmDeleteBlog' blog.id %}">Sure, Delete</a>
+        </div>
+
+        <div class="flex justify-between">
+            <h1>No</h1>
+            <a class="bg-red-500 p-1 rounded" href="{% url 'blogDetail' blog.id %}">No, Go back</a>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

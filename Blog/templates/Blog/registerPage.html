@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+
+{% block title%}
+    Register Page
+{% endblock %}
+
+{% block content %}
+<div class="w-full h-full p-8">
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="p-4 bg-white/40 w-full max-w-sm flex flex-col gap-5 rounded ml-auto mr-auto mt-20">
+                <div class="flex flex-col gap-2">
+                    <label for="username">Username</label>
+                    <input 
+                        class="rounded w-full"
+                        type="text" 
+                        name='username' 
+                        id='username' 
+                        placeholder="Enter Your name"
+                        required 
+                    >
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <label for="email">Email</label>
+                    <input 
+                        class="rounded w-full"
+                        type="email" 
+                        name='email' 
+                        id='email' 
+                        placeholder="Enter Your Email"
+                        required 
+                    >
+                </div>
+    
+                <div class="flex flex-col gap-2">
+                    <label for="pass1">Password</label>
+                    <input 
+                        class="rounded w-full"
+                        type="password" 
+                        name='pass1' 
+                        id='pass1' 
+                        placeholder="Enter Your Password"
+                        required 
+                    >
+                </div>
+                <div class="flex flex-col gap-2">
+                    <label for="pass2">Confirm Password</label>
+                    <input 
+                        class="rounded w-full"
+                        type="password" 
+                        name='pass2' 
+                        id='pass2' 
+                        placeholder="Password Again"
+                        required 
+                    >
+                </div>
+
+                <input class="text-center bg-orange-500 p-1 rounded text-white font-bold" type="submit" value="SignUp">
+                <p class="flex justify-between">Already have an account? <a class="text-end text-red-600 underline" href="{% url 'loginPage' %}">Login to account</a></p>
+
+            </div>
+    </form>
+</div>
+{% endblock %}

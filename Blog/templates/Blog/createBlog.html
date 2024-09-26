@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+
+{% block title %}
+    Create Blog
+{% endblock %}
+
+{% block content %}
+
+
+    <div class='w-full h-full p-8'>
+        <form method='POST' enctype='multipart/form-data'>
+            {% csrf_token %} 
+            <div class="p-4 bg-white/40 w-full max-w-md rounded ml-auto mr-auto">
+                {{ form.title }}
+                {{ form.image }}
+                
+                <input class="w-full max-w-md p-1 font-bold mt-5 rounded text-center bg-green-500" type="submit" value="Post">
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

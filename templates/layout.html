@@ -1,0 +1,32 @@
+{% load static tailwind_tags %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+        
+        {% endblock %}
+    </title>
+    {% tailwind_css %}
+
+</head>
+<body class="bg-gray-600 h-full">
+    {% if user.is_authenticated %}
+    <nav class="bg-gray-800 w-full p-1.5">
+        <div class="w-full flex flex-row p-1.5 gap-8">
+            <a class="text-white font-bold hover:text-red-400 text-sm sm:text-lg" href="{% url 'homePage' %}">Home</a>
+            <a class="text-white font-bold hover:text-red-400 text-sm sm:text-lg" href="{% url 'createBlog' %}">Create</a>
+            <a class="text-white font-bold hover:text-red-400 text-sm sm:text-lg" href="{% url 'logoutPage' %}">Logout</a>
+        </div>
+    </nav>
+    {% endif %}
+
+    {% block content %}
+    
+    {% endblock %}
+</body>
+</html>

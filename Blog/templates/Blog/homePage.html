@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+
+{% block title%}
+    Home Page | Blog
+{% endblock %}
+
+{% block content %}
+
+    
+
+    {% if user.is_authenticated %}
+
+        <div class="grid grid-cols-1 w-full h-full justify-items-center  gap-2.5 p-5">
+
+            <h1 class="p-2 font-bold border-2 border-green-400 text-white text-center w-full max-w-lg rounded">Hello {{user | title}}, what's on your mind?</h1>
+            {% for blog in blogs %}
+
+                <div class="p-4 bg-white/60 rounded w-full max-w-lg">
+                    <div class="flex items-center gap-2.5">
+                        <div class=" w-4 h-4 p-5 sm:p-7 bg-white rounded-full"></div>
+                        <p class="text-sm sm:text-md md:text-lg">By {{blog.author}}</p>
+                    </div>
+                    <p class="mt-2.5">{{blog.title}}</p>
+                    <img class="rounded w-full mt-2.5" src="{{blog.image.url}}" alt="">
+                    
+                    <button class="w-full bg-blue-400 rounded  p-1 mt-2.5"><a href="{% url "blogDetail" blog.id %}">View</a></button>
+                    
+                </div>   
+
+            {% endfor %}
+
+        </div>  
+
+     {% else %}
+        <h2 class='p-2 text-center text-white font-bold shadow-2xl'>Login to watch latest feed.
+            <a class="text-blue-400 underline" href="{% url 'loginPage' %}">Go to Login</a>
+        </h2>
+    {% endif %} 
+{% endblock %}
